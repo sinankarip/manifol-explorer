@@ -1,5 +1,6 @@
 # manifold-explorer
 Beyond Accuracy: A case study in building trustworthy AI by stress-testing, explaining, and optimizing a computer vision model for robust deployment on an edge device.
+> - Dataset used: [here](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)
 ## Core Philosophy of the Project
 
 The purpose of this project is not to blindly chase accuracy. Our main goal is to understand the gap between a model's theoretical **"known world"** and the chaotic **"real world"** and to bridge this gap.
@@ -22,6 +23,9 @@ Starting with this philosophy, our first task was to find a model that behaves "
 ### Experiment 1: ResNet - A Dangerous Overconfidence
 
 Our initial tests with ResNet were a vivid proof of why high accuracy rates can be misleading.
+> - Full Kaggle notebook: [here](https://www.kaggle.com/code/sinankr/shortcut-learning-with-resnet)  
+
+
 
 * **Setup:** We fine-tuned the model with over 150,000 augmented images.
 * **Misleading Result:** We achieved an absurdly high accuracy of **97%** on the "easy" validation set.
