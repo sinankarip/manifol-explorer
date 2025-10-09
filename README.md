@@ -183,18 +183,50 @@ Using the 2,000 real agricultural images as references, these tools allow me to:
 - Perform topology-aware augmentation guided by the previously defined Void Score.
 
 ---
+# 04_tail_distribution.ipynb — Stuck on the Tail Distribution
+
+## 1. Motivation: The Statistical Wall
+
+Our previous work defined the **Void Score** to map regions of epistemic uncertainty in the latent space of EfficientNet. The logical next step was to populate these voids with *synthetic data*. However, we encountered a fundamental constraint of *long-tail distribution learning*.
+
+We only have **2,000 agricultural images**. Relative to the **hundreds of millions** of samples used to train models like *Stable Diffusion*, this represents an extreme tail region of the global image distribution. Consequently, when prompted with a term such as `"leaf"`, the model defaults to producing bright, idealized, stereotypical greenery—statistically dominant in its prior training corpus. This reveals a failure to capture the **fine-grained statistical manifold** of our specific dataset.
+
+---
+
+## 2. The Tail Distribution Problem
+
+Even if we attempt to fine-tune Stable Diffusion, the parameter prior induced by its massive base model remains heavily biased toward the **high-density regions** of its global training distribution.
+
+Fine-tuning with only 2,000 samples introduces a **measure mismatch problem**: the fine-tuned model remains dominated by the pretrained prior and continues to generate *semantically irrelevant or stylistically biased* images.
+
+---
+
+## 3. Strategic Reorientation: From Imitation to Simulation
+
+To bypass this statistical bottleneck, I decided to shift from **text-to-image imitation** to **procedural simulation**.
+
+Instead of repeatedly asking Stable Diffusion to "generate something similar," I employ **3D rendering environments** such as **Blender**, **Unity**, or **OpenUSD** to construct *controlled synthetic data*.
+
+Using the 2,000 real agricultural images as references, these tools allow me to:
+
+- Simulate photometric, geometric, and seasonal variability under explicit physical constraints
+- Render novel but domain-consistent images that expand the local support within the feature space
+- Perform topology-aware augmentation guided by the previously defined Void Score
+
+---
 
 ## 4. Dual Path Forward
 
 This simulation pipeline opens two possible research trajectories:
 
-1. **Fine-tuning Stable Diffusion with domain-augmented data**  
-   Expands its prior support around \( p_{\text{agri}}(x) \), potentially reducing mode collapse toward generic vegetation.
+### Path 1: Fine-tuning Stable Diffusion with Domain-Augmented Data
+Expands its prior support around the agricultural distribution, potentially reducing mode collapse toward generic vegetation.
 
-2. **Training a dedicated GAN or diffusion model from scratch**  
-   Uses the augmented synthetic corpus as a self-contained dataset, ensuring that the learned generative manifold directly aligns with the epistemic structure of EfficientNet’s feature space.
+### Path 2: Training a Dedicated GAN or Diffusion Model from Scratch
+Uses the augmented synthetic corpus as a self-contained dataset, ensuring that the learned generative manifold directly aligns with the epistemic structure of EfficientNet's feature space.
 
-Both paths aim to **break the long-tail lock-in** by *manufacturing density* in regions where none previously existed.  
+Both paths aim to **break the long-tail lock-in** by *manufacturing density* in regions where none previously existed.
+
 Ultimately, this approach redefines synthetic data generation not as artistic sampling, but as **topological compensation** for the tail deficiency of real-world data.
 
 ---
