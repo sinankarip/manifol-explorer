@@ -23,7 +23,7 @@ Starting with this philosophy, our first task was to find a model that behaves "
 ### Experiment 1: ResNet - A Dangerous Overconfidence
 
 Our initial tests with ResNet were a vivid proof of why high accuracy rates can be misleading.
-> - Full Kaggle notebook: [here](https://www.kaggle.com/code/sinankr/shortcut-learning-with-resnet)  
+> - Full Kaggle notebook: [here](https://github.com/sinankarip/manifol-explorer/blob/main/notebooks/00_RNet_Shortcut_Learning.ipynb)  
 
 
 
@@ -97,7 +97,7 @@ To interpret the Void Score structurally, all feature vectors were reduced to 2D
 - Despite the small test set (N=1000), systematic augmentation confirmed that void regions correlate strongly with confidence collapses under input perturbations
 
 ## 4. Linear Proxy Analysis
-
+![OLS Line](plots/OLS_Line.png)
 A striking empirical pattern emerged: a consistent linear trend between confidence and Void Score, suggesting a simple linear relation explains much of the variance.
 
 **OLS Model Performance:**
@@ -108,9 +108,9 @@ A striking empirical pattern emerged: a consistent linear trend between confiden
 **Residual Interpretation:**
 - **Red Triangles (▲)**: Samples where actual Void Score > predicted—truly chaotic, underrepresented areas missed by OLS
 - **Blue Triangles (▼)**: Samples where actual Void Score < predicted—dense, low-risk zones where OLS overestimates uncertainty
-
+![Residual Interpretation](plots/Residual_Analysis.png)
 **Key Insight**: OLS falsely flagged 839 safe examples while missing only 85 genuinely risky ones (~1.7%). The Void Score preserves the nonlinear topology of the learned manifold that linear models cannot capture.
-
+![VoidScore_OLS](plots/VoidScore_OLS.png)
 ## 5. Epistemic Implication: Toward Geometry-Aware Augmentation
 
 The Void Score formalizes the model's comfort zone boundary in latent space. It enables data augmentation or adversarial sampling to be directed **not randomly, but topologically**—toward the voids of D″ that lie on the frontier of the real-world manifold E.
@@ -157,6 +157,9 @@ This component-aware approach transforms uncertainty analysis from a diagnostic 
 Our previous work defined the **Void Score** to map regions of epistemic uncertainty in the latent space of EfficientNet. The logical next step was to populate these voids with *synthetic data*. However, we encountered a fundamental constraint of *long-tail distribution learning*.
 
 We only have **2,000 agricultural images**. Relative to the **hundreds of millions** of samples used to train models like *Stable Diffusion*, this represents an extreme tail region of the global image distribution. Consequently, when prompted with a term such as `"leaf"`, the model defaults to producing bright, idealized, stereotypical greenery—statistically dominant in its prior training corpus. This reveals a failure to capture the **fine-grained statistical manifold** of our specific dataset \( D \subset E \).
+![SD_sample_01](plots/SD_sample_01.png)
+![SD_sample_02](plots/SD_sample_02.png)
+![SD_sample_03](plots/SD_sample_03.png)
 
 ---
 
