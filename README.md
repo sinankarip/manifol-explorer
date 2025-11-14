@@ -175,18 +175,6 @@ Thus, the fine-tuned model remains dominated by the pretrained prior and continu
 
 ---
 
-## 3. Strategic Reorientation: From Imitation to Simulation
-
-To bypass this statistical bottleneck, I decided to shift from **text-to-image imitation** to **procedural simulation**.  
-Instead of repeatedly asking Stable Diffusion to “generate something similar,” I employ **3D rendering environments** such as **Blender**, **Unity**, or **OpenUSD** to construct *controlled synthetic data*.  
-
-Using the 2,000 real agricultural images as references, these tools allow me to:
-- Simulate photometric, geometric, and seasonal variability under explicit physical constraints.  
-- Render novel but domain-consistent images that expand the local support of \( D'' \) within \( E \).  
-- Perform topology-aware augmentation guided by the previously defined Void Score.
-
----
-
 ## License
 
 This project is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
