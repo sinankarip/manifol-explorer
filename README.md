@@ -175,6 +175,72 @@ Thus, the fine-tuned model remains dominated by the pretrained prior and continu
 
 ---
 
+# 05a_feature_extraction.ipynb — Attempted Latent-Space Validation
+
+## 1. Motivation: Does the Void Score Reflect True Latent Geometry?
+
+The Void Score consisted of three components:
+* predictive uncertainty,
+* geometric density (k-NN),
+* Mahalanobis outlierness.
+
+These components are heuristics dependent on pixel space and class statistics. Therefore, a natural question emerged:
+
+"Do these heuristic clusters actually separate in EfficientNet's CNN latent space?"
+
+To answer this question, we extracted penultimate-layer feature vectors for all samples (N × d matrix).
+
+# 05b_latent_validation_umap.ipynb — Failed Latent-Space Clustering
+
+## 2. Method: UMAP Projection of CNN Features
+
+Feature vectors were reduced to 2 dimensions using UMAP, and five categories were labeled:
+* core
+* geom_tail
+* epistemic
+* chaotic_tail
+* unknown
+
+The purpose of this step was to verify whether the clusters showed structural separation on the true latent manifold.
+
+## 3. Result: No Meaningful Separation
+
+No meaningful cluster formation was observed in any category or projection.
+
+Therefore, the latent-validation experiment was left as a diagnostic step and not included in the pipeline.
+
+![UMAP_clusters](plots/umap_clusters.png)
+
+
+
+# 06_mfold_aware_analysis.ipynb — Transition to Manifold-Aware Augmentation
+
+## 1. Insight: Void Score Should Guide Weighting, Not Clustering
+
+After latent validation failed, the problem was reframed:
+
+"The role of Void Score is not to produce clusters, but to serve as a weighting function that determines augmentation intensity."
+
+Therefore, the Void Score was transformed into the form:
+
+w_i = f(void_i)
+
+Using quantile-based separation:
+* low void → minimal augmentation
+* high void → heavy augmentation
+* augmentations with extreme artifacts → excluded from training, used only in chaos test set
+
+## 2. Practical Outcome
+
+This transformation provided two important benefits:
+
+1. It strengthened critical edge-case regions without distorting the realistic manifold of the training data.
+2. Chaos test artifacts (extreme color distortion, purple leaves, etc.) were completely separated from training.
+
+As a result, the project evolved from heuristic clustering errors into a more consistent "manifold-aware robustness" strategy.
+
+--------
+
 ## License
 
 This project is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
