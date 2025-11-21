@@ -195,13 +195,18 @@ To answer this question, we extracted penultimate-layer feature vectors for all 
 ## 2. Method: UMAP Projection of CNN Features
 
 Feature vectors were reduced to 2 dimensions using UMAP, and five categories were labeled:
-* core
-* geom_tail
-* epistemic
-* chaotic_tail
-* unknown
+
+- [core subset](plots/latent_clusters/core_tail.png)
+- [geom tail](plots/latent_clusters/geom_tail.png)
+- [epistemic tail](plots/latent_clusters/epistemic_tail.png)
+- [chaotic tail](plots/latent_clusters/chaotic_tail.png)
+- [unknown subset](plots/latent_clusters/unknown_imgs.png)
 
 The purpose of this step was to verify whether the clusters showed structural separation on the true latent manifold.
+
+### Additional Note
+
+Although the metadata (void score components, uncertainty signals, and density proxies) provide meaningful diagnostic structure, their visual appearance in RGB space does not necessarily reflect the underlying latent geometry. These subsets remain valuable for targeted augmentation and robustness analysis, but they should not be interpreted as visually coherent clusters. Their purpose is functional, not aesthetic.
 
 ## 3. Result: No Meaningful Separation
 
