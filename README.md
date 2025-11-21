@@ -216,6 +216,10 @@ Therefore, the latent-validation experiment was left as a diagnostic step and no
 
 ![UMAP_clusters](plots/umap_clusters.png)
 
+-[pca cluster](plots/clusters/pca_cluster.png)
+-[cluster 1](plots/clusters/cluster01.png)
+-[cluster 2](plots/clusters/cluster02.png)
+
 
 
 # 06_mfold_aware_analysis.ipynb — Transition to Manifold-Aware Augmentation
