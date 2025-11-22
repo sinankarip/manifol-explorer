@@ -1,5 +1,5 @@
 # manifold-explorer
-Beyond Accuracy: A case study in building trustworthy AI by stress-testing, explaining, and optimizing a computer vision model for robust deployment on an edge device.
+Beyond Accuracy: A framework for diagnosing topological blind spots and quantifying epistemic uncertainty in computer vision models.
 > - Dataset used: [here](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)
 ## Core Philosophy of the Project
 
