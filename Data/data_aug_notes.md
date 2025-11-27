@@ -1,5 +1,5 @@
 # Data Augmentation Process and Observations
-[Data](https://drive.google.com/drive/folders/1SjurPH0S4M188chSMrSgYlVChUMjhS0G?usp=drive_link)
+[Data](https://drive.google.com/drive/folders/1SjurPH0S4M188chSMrSgYlVChUMjhS0G?usp=sharing)
 ## Augmentation Application
 
 Images marked as high void according to the script were augmented using scripts located in the `scripts/` folder. Augmentation was performed entirely based on the `aug_times` value in the dataframe.
