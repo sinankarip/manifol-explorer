@@ -141,6 +141,7 @@ def generate_augmented_views(
 ):
     out_dir.mkdir(parents=True, exist_ok=True)
     leaf_bgra = load_rgba(leaf_path)
+    leaf_stem = leaf_path.stem
     h, w = leaf_bgra.shape[:2]
 
     src_pts = np.float32([[0, 0], [w - 1, 0], [w - 1, h - 1], [0, h - 1]])
@@ -177,7 +178,7 @@ def generate_augmented_views(
             noise = np.random.normal(0, 4, comp.shape).astype(np.int16)
             comp = np.clip(comp.astype(np.int16) + noise, 0, 255).astype(np.uint8)
 
-        out_path = out_dir / f"view_{i:04d}.png"
+        out_path = out_dir / f"{leaf_stem}_view_{i:04d}.png"
         cv2.imwrite(str(out_path), comp)
         if i % 10 == 0:
             print(f"[{i}/{num_views}] -> {out_path}")
