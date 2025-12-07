@@ -248,6 +248,43 @@ This transformation provided two important benefits:
 
 As a result, the project evolved from heuristic clustering errors into a more consistent "manifold-aware robustness" strategy.
 
+# 07_chaos_edge_latent_validation — Validation of Manual Taxonomy in Latent Geometry
+
+## 1. Motivation: Is Visual Distinction Mathematical or Subjective?
+
+During dataset cleaning, we separated data that failed quality control into two categories: "Chaos" (severe corruption) and "Edge" (decision boundary uncertainty). However, this distinction was initially made entirely by human intuition.
+
+The fundamental research question here was: "Is this labeling our subjective perception, or do these two classes truly have a geometric counterpart in the model's latent space (manifold)?"
+
+## 2. Stage 1 (07a): Deep Latent Separability
+
+First, we worked with 1280-dimensional vectors extracted from EfficientNet's penultimate layer.
+
+* **Visual Illusion (UMAP)**: When we examined it through dimensionality reduction (Figure 1), there was no clear visual separation between Chaos and Edge samples.
+* **Statistical Reality (Logistic Regression)**: However, a simple linear classifier trained in the raw 1280-dimensional latent space achieved a ROC-AUC score of 0.922.
+* **Geometric Distance (Wasserstein)**: The Wasserstein distance between the two distributions was measured as 10.15.
+
+**Finding**: Even though humans cannot see it in 2 dimensions, when we look at the model's high-dimensional manifold, these two classes live in statistically distinct regions.
+
+![plot](plots/chaos_edge_umap_separation.png)
+
+### Color vs. Structure Hypothesis
+
+When we converted images to grayscale and re-extracted latent vectors, AUC dropped from 0.92 to 0.72. This proved that the distinction is largely based on color information, but not solely on color (0.72 is still well above chance).
+
+## 3. Stage 2 (07b): Feature Ablation
+
+To determine what the model bases this distinction on, we conducted an ablation study with hand-crafted features.
+
+| Experiment Configuration | Method | Result (AUC) | Interpretation |
+|-------------------------|--------|--------------|----------------|
+| Color Only | LightGBM (HSV, Hist) | 0.957 | Color is the most dominant distinguishing factor. |
+| Without Color | LightGBM (Texture, Edge) | 0.543 | Without color, the model makes almost random predictions. |
+| EfficientNet (RGB) | Learned Features | 0.943 | The model's own latent space. |
+| EfficientNet (Gray) | Learned Features | 0.781 | Structural/textural features still carry meaningful information. |
+
+**Conclusion**: While color makes its weight felt throughout the feature vector with a primitive feature extractor method, in the feature space extracted by the model, it makes its weight felt to a large extent but does not encompass a feature space on its own.
+
 --------
 
 ## License
