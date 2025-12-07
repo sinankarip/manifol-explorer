@@ -140,6 +140,44 @@ This way, we strengthen the model's weak spots **without** corrupting what it al
 
 ---
 
+### Step 7: Validating Our Intuition
+
+**Notebook:** `07_chaos_edge_latent_validation.ipynb`
+
+We had manually sorted our "bad" data into two piles:
+
+1. **Chaos:** Complete garbage, visually destroyed images.
+2. **Edge:** Tricky, ambiguous images that sit on the borderline.
+
+But a nagging question remained: *Did we just make these categories up?* Is this distinction real, or is it just a product of our human imagination? We needed to know if the model actually sees the difference between a "Chaos" image and an "Edge" image.
+
+#### The Invisible Wall
+
+First, we tried to plot these two groups on a chart. To our eyes, they looked like a mixed-up mess. There was no clear line separating them.
+
+However, **math sees what eyes cannot.**
+
+When we ran a statistical test (Logistic Regression) on the model's raw brain activity (latent space), we discovered a hidden truth: **The model can tell them apart with 92% accuracy.** Even though the chart looked messy to us, the model had drawn a very sharp line in its mind.
+
+![here](plots/chaos_edge_umap_separation.png)
+
+> *To us, it looks mixed. To the model, these are two different worlds.*
+
+#### Is It Just About Color?
+
+We challenged the model further: *"Are you just looking at weird colors to tell these apart?"*
+
+We stripped away all color (Grayscale) and forced the model to look again.
+
+- **With Color:** It's almost too easy (95% separation).
+- **Black & White:** It became harder, but the model could still tell the difference (78%).
+
+#### The Verdict
+
+The model agrees with our human labeling. Yes, it uses color as a major shortcut (because weird colors are a dead giveaway for "Chaos"), but it's not just looking at color. **It actually understands the structural damage in the images.**
+
+This confirms that our "Chaos" vs. "Edge" separation isn't just a subjective feeling—**it's a mathematically real distinction that the model understands.**
+
 ## Core Philosophy
 
 This project is **not about chasing accuracy numbers**. It's about understanding the gap between:
