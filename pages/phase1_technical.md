@@ -1,24 +1,79 @@
 # manifold-explorer
 Beyond Accuracy: A framework for diagnosing topological blind spots and quantifying epistemic uncertainty in computer vision models.
 > - Dataset used: [here](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)
-## Core Philosophy of the Project
+# Core Philosophy of the Project
 
-The purpose of this project is not to blindly chase accuracy. Our main goal is to understand the gap between a model's theoretical **"known world"** and the chaotic **"real world"** and to bridge this gap.
+This project does not aim to propose a new learning theory, framework, or formal methodology.
+The purpose of this work is to clarify **how the learning problem is conceptualized** within the scope of this project, and to explore the consequences of that conceptualization through observation and experimentation.
 
-We define this with a mathematical objective:
-* `E`: The infinite space of all possible images in the real world.
-* `D`: Our clean, "studio" dataset at hand.
-* `D''`: The learned space (learned manifold) that our model understands and can "comfortably navigate."
+It is entirely possible that similar interpretations already exist in the literature.  
+If so, this project does not claim originality; it adopts a viewpoint that is found to be more compatible with the questions being explored here.
+This is a personal research blog, and the philosophy of the project reflects that context.
 
-Our task is to explore the boundaries of the model's comfort zone `D''`. We aim to expand this area toward regions of `E` that were not previously covered. This means understanding and narrowing the **error manifold** **ε = E \ D''** (the area where the model doesn't know and will make mistakes).
+---
 
-*In short, we aim to make the model more reliable by hunting down its weaknesses.*
+## How the Learning Problem Is Framed
 
-** Methodological Note:** The execution of this project by a single researcher carries a **natural bias risk** in Red Teaming and Chaos Testing designs. The discovered weaknesses should be interpreted with this constraint in mind.
+Learning is approached as a problem defined over a large and structurally rich space, where only partial understanding is possible.
 
-## Initial Research: Which Model Knows How to Say "I Don't Know"? (`01_baseline_finetune.ipynb`)
+We consider a problem space  
 
-Starting with this philosophy, our first task was to find a model that behaves "honestly" in the face of uncertainty. We compared two popular architectures based on this principle.
+$$(\mathcal{X}, \tau)$$
+
+equipped only with a topology.
+
+No probability measure, metric, norm, loss function, or ordering relation is assumed.
+
+Within this space, we reason about latent, task-relevant problem substructures:
+
+$$\\{P_k\\}_{k \in K}, \quad P_k \subset \mathcal{X}$$
+
+which are not required to be disjoint, measurable, enumerable, or sharply defined.
+
+A model, in turn, is understood to induce a family of decision regions:
+
+$$\\{D_i\\}_{i \in I}, \quad D_i \subset \mathcal{X}$$
+
+Learning is interpreted here as the existence of a **partial and necessarily incomplete structural correspondence** between selected problem substructures and model-induced decision regions.
+
+No assumption is made that such correspondence is complete, optimal, unique, or comparable across models.
+
+---
+
+## A Working Assumption (Axiom)
+
+A central assumption guiding this project is that the problem space is sufficiently large and expressive such that **globally optimal or complete learning is not achievable**.
+
+Formally, for any model-induced collection of decision regions:
+
+$$\\{D_i\\}_{i \in I}$$
+
+there exists at least one element:
+
+$$a \in \mathcal{X} \quad \text{such that} \quad a \notin \bigcup_{i \in I} D_i$$
+
+This assumption is not presented as a theorem, nor as a claim about specific models, but as a **conceptual boundary** within which this project operates.
+
+Uncovered regions of the problem space are therefore treated as a natural and expected aspect of learning, not as anomalies.
+
+---
+
+## Scope and Intent
+
+This project is exploratory in nature.
+
+It does not seek to define optimality, rank models, or establish performance guarantees.  
+It does not attempt to replace existing statistical or optimization-based learning frameworks.
+
+Instead, it asks a limited set of recurring questions, such as:
+
+- Which structures appear to be captured by a model?
+- Which structures remain systematically unsupported?
+- How do failures manifest when no notion of global optimality is assumed?
+
+The goal is not to answer these questions definitively, but to **examine them carefully** within the adopted conceptual stance.
+
+No stronger claim is made.
 
 ### Experiment 1: ResNet - A Dangerous Overconfidence
 
