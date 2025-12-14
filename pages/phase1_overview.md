@@ -25,10 +25,10 @@ We tested two popular models and asked them a simple question: **"Can you admit 
 - This is what we call **"ignorant courage"**—confidently wrong
 - Like someone who doesn't know the answer but raises their hand first anyway
 
-![ResNet Grad-CAM](plots/resnet_gradcam.png)
+![ResNet Grad-CAM]({{ site.baseurl }}/plots/resnet_gradcam.png)
 *ResNet focuses on broad, unfocused regions*
 
-![ResNet Overconfidence Analysis](plots/resnet_oc.png)
+![ResNet Overconfidence Analysis]({{ site.baseurl }}/plots/resnet_oc.png)
 *ResNet's dangerous overconfidence: red (corrupted data) overlaps with blue (normal data)*
 
 **EfficientNet: The Humble Scholar**
@@ -36,10 +36,10 @@ We tested two popular models and asked them a simple question: **"Can you admit 
 - Essentially saying: "I haven't seen this before, I'm not sure"
 - This is the **virtue of admitting ignorance** we were looking for
 
-![EfficientNet Grad-CAM](plots/effnet_gradcam.png)
+![EfficientNet Grad-CAM]({{ site.baseurl }}/plots/effnet_gradcam.png)
 *EfficientNet focuses sharply on relevant leaf areas*
 
-![EfficientNet Overconfidence Analysis](plots/effnet_oc.png)
+![EfficientNet Overconfidence Analysis]({{ site.baseurl }}/plots/effnet_oc.png)
 *EfficientNet's honest uncertainty: confidence drops significantly for corrupted data (red)*
 
 **Winner:** We chose EfficientNet because it can say "I don't know" rather than pretending with false confidence.
@@ -54,16 +54,16 @@ We created a mathematical formula called the **Void Score** that identifies dang
 
 But wait—did we really need such a complex formula? We tested it against a simple linear regression:
 
-![OLS Line](plots/OLS_Line.png)
+![OLS Line]({{ site.baseurl }}/plots/OLS_Line.png)
 *Linear regression captures most of the pattern*
 
 **The Result:** The regression model captured 98.3% of the pattern, but our Void Score caught an additional **1.7% of critical cases** that the regression missed.
 
-![Residual Interpretation](plots/Residual_Analysis.png)
+![Residual Interpretation]({{ site.baseurl }}/plots/Residual_Analysis.png)
 *Red triangles (▲): truly dangerous cases our method caught*
 *Blue triangles (▼): safe zones the regression overestimated*
 
-![VoidScore_OLS](plots/VoidScore_OLS.png)
+![VoidScore OLS]({{ site.baseurl }}/plots/VoidScore_OLS.png)
 
 **Why This Matters:** In a small dataset, that 1.7% is incredibly valuable. These are the exact blind spots we need to fix.
 
@@ -86,9 +86,9 @@ We thought: "Let's generate synthetic images to fill the gaps!"
 
 We tried using Stable Diffusion, a powerful image generator. But here's what happened:
 
-![SD_sample_01](plots/SD_sample_01.png)
-![SD_sample_02](plots/SD_sample_02.png)
-![SD_sample_03](plots/SD_sample_03.png)
+![SD sample 01]({{ site.baseurl }}/plots/SD_sample_01.png)
+![SD sample 02]({{ site.baseurl }}/plots/SD_sample_02.png)
+![SD sample 03]({{ site.baseurl }}/plots/SD_sample_03.png)
 
 **The Problem:** When we asked for "leaf images," it gave us bright, perfect, stereotypical green leaves—like stock photos. These looked nothing like our real agricultural dataset.
 
@@ -103,17 +103,17 @@ We tried using Stable Diffusion, a powerful image generator. But here's what hap
 We tried to see if the model organizes dangerous images into clusters in its "mental space."
 
 We labeled five categories:
-- [core subset](plots/latent_clusters/core_tail.png)
-- [geom tail](plots/latent_clusters/geom_tail.png)
-- [epistemic tail](plots/latent_clusters/epistemic_tail.png)
-- [chaotic tail](plots/latent_clusters/chaotic_tail.png)
-- [unknown subset](plots/latent_clusters/unknown_imgs.png)
+-![Core subset]({{ site.baseurl }}/plots/latent_clusters/core_tail.png)
+-![Geometric tail]({{ site.baseurl }}/plots/latent_clusters/geom_tail.png)
+-![Epistemic tail]({{ site.baseurl }}/plots/latent_clusters/epistemic_tail.png)
+-![Chaotic tail]({{ site.baseurl }}/plots/latent_clusters/chaotic_tail.png)
+-![Unknown subset]({{ site.baseurl }}/plots/latent_clusters/unknown_imgs.png)
 
-![UMAP_clusters](plots/umap_clusters.png)
+![UMAP clusters]({{ site.baseurl }}/plots/umap_clusters.png)
 
-- [pca cluster](plots/clusters/pca_cluster.png)
-- [cluster 1](plots/clusters/cluster01.png)
-- [cluster 2](plots/clusters/cluster02.png)
+-![PCA cluster]({{ site.baseurl }}/plots/clusters/pca_cluster.png)
+-![Cluster 1]({{ site.baseurl }}/plots/clusters/cluster01.png)
+-![Cluster 2]({{ site.baseurl }}/plots/clusters/cluster02.png)
 
 **The Result:** No meaningful patterns emerged. The model's internal organization was chaotic, not structured.
 
@@ -159,7 +159,8 @@ However, **math sees what eyes cannot.**
 
 When we ran a statistical test (Logistic Regression) on the model's raw brain activity (latent space), we discovered a hidden truth: **The model can tell them apart with 92% accuracy.** Even though the chart looked messy to us, the model had drawn a very sharp line in its mind.
 
-![here](plots/chaos_edge_umap_separation.png)
+![Chaos–Edge UMAP separation]({{ site.baseurl }}/plots/chaos_edge_umap_separation.png)
+
 
 > *To us, it looks mixed. To the model, these are two different worlds.*
 
