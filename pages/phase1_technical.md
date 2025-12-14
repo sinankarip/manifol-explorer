@@ -33,10 +33,10 @@ Our initial tests with ResNet were a vivid proof of why high accuracy rates can 
    * It produced **absurd predictions** even with the slightest image corruptions.
    * More worryingly, it acted with **dangerous overconfidence** (99%+ confidence) while making these errors. There was almost no decrease in confidence scores.
 * **Grad-CAM**: The heatmap below shows ResNet's tendency to focus on broader, less specific regions.
-![ResNet Grad-CAM](plots/resnet_gradcam.png)
+![ResNet Grad-CAM]({{ site.baseurl }}/plots/resnet_gradcam.png)
 
 * **Overconfidence Analysis**: The plot clearly demonstrates ResNet's dangerous overconfidence. The confidence distribution for stress-test data (red) remains dangerously high, overlapping almost completely with the distribution for normal data (blue).
-![ResNet Overconfidence Analysis](plots/resnet_oc.png)
+![ResNet Overconfidence Analysis]({{ site.baseurl }}/plots/resnet_oc.png
 
 **Summary:** ResNet was an unreliable candidate, prone to making errors silently and with self-assurance.
 
@@ -49,10 +49,11 @@ EfficientNet, however, exhibited a completely different character.
    * As if saying "I haven't seen these areas, I don't know what to do," it showed **significant and consistent decreases** in confidence scores.
    * This behavior indicated that the model better understood the limits of its own knowledge.
 * **Grad-CAM**: In contrast, EfficientNet focuses sharply on the relevant areas of the leaf, as shown in the heatmap.
-![EfficientNet Grad-CAM](plots/effnet_gradcam.png)
+![EfficientNet Grad-CAM]({{ site.baseurl }}/plots/effnet_gradcam.png)
 
 * **Overconfidence Analysis**: This plot highlights EfficientNet's "honest uncertainty." When faced with stress-test data (red), the model's confidence distribution shifts significantly to the left, indicating it "knows what it doesn't know."
-![EfficientNet Overconfidence Analysis](plots/effnet_oc.png)
+![EfficientNet Overconfidence Analysis]({{ site.baseurl }}/plots/effnet_oc.png)
+
 
 **Summary:** EfficientNet offered a more solid foundation as a model that "knows what it doesn't know" and was selected for the continuation of the project.
 
@@ -97,7 +98,7 @@ To interpret the Void Score structurally, all feature vectors were reduced to 2D
 - Despite the small test set (N=1000), systematic augmentation confirmed that void regions correlate strongly with confidence collapses under input perturbations
 
 ## 4. Linear Proxy Analysis
-![OLS Line](plots/OLS_Line.png)
+![OLS Line]({{ site.baseurl }}/plots/OLS_Line.png)
 A striking empirical pattern emerged: a consistent linear trend between confidence and Void Score, suggesting a simple linear relation explains much of the variance.
 
 **OLS Model Performance:**
@@ -108,9 +109,9 @@ A striking empirical pattern emerged: a consistent linear trend between confiden
 **Residual Interpretation:**
 - **Red Triangles (▲)**: Samples where actual Void Score > predicted—truly chaotic, underrepresented areas missed by OLS
 - **Blue Triangles (▼)**: Samples where actual Void Score < predicted—dense, low-risk zones where OLS overestimates uncertainty
-![Residual Interpretation](plots/Residual_Analysis.png)
+![Residual Interpretation]({{ site.baseurl }}/plots/Residual_Analysis.png)
 **Key Insight**: OLS falsely flagged 839 safe examples while missing only 85 genuinely risky ones (~1.7%). The Void Score preserves the nonlinear topology of the learned manifold that linear models cannot capture.
-![VoidScore_OLS](plots/VoidScore_OLS.png)
+![VoidScore OLS]({{ site.baseurl }}/plots/VoidScore_OLS.png)
 ## 5. Epistemic Implication: Toward Geometry-Aware Augmentation
 
 The Void Score formalizes the model's comfort zone boundary in latent space. It enables data augmentation or adversarial sampling to be directed **not randomly, but topologically**—toward the voids of D″ that lie on the frontier of the real-world manifold E.
@@ -157,9 +158,9 @@ This component-aware approach transforms uncertainty analysis from a diagnostic 
 Our previous work defined the **Void Score** to map regions of epistemic uncertainty in the latent space of EfficientNet. The logical next step was to populate these voids with *synthetic data*. However, we encountered a fundamental constraint of *long-tail distribution learning*.
 
 We only have **2,000 agricultural images**. Relative to the **hundreds of millions** of samples used to train models like *Stable Diffusion*, this represents an extreme tail region of the global image distribution. Consequently, when prompted with a term such as `"leaf"`, the model defaults to producing bright, idealized, stereotypical greenery—statistically dominant in its prior training corpus. This reveals a failure to capture the **fine-grained statistical manifold** of our specific dataset \( D \subset E \).
-![SD_sample_01](plots/SD_sample_01.png)
-![SD_sample_02](plots/SD_sample_02.png)
-![SD_sample_03](plots/SD_sample_03.png)
+![SD sample 01]({{ site.baseurl }}/plots/SD_sample_01.png)
+![SD sample 02]({{ site.baseurl }}/plots/SD_sample_02.png)
+![SD sample 03]({{ site.baseurl }}/plots/SD_sample_03.png)
 
 ---
 
@@ -196,11 +197,12 @@ To answer this question, we extracted penultimate-layer feature vectors for all 
 
 Feature vectors were reduced to 2 dimensions using UMAP, and five categories were labeled:
 
-- [core subset](plots/latent_clusters/core_tail.png)
-- [geom tail](plots/latent_clusters/geom_tail.png)
-- [epistemic tail](plots/latent_clusters/epistemic_tail.png)
-- [chaotic tail](plots/latent_clusters/chaotic_tail.png)
-- [unknown subset](plots/latent_clusters/unknown_imgs.png)
+![Core subset]({{ site.baseurl }}/plots/latent_clusters/core_tail.png)
+![Geometric tail]({{ site.baseurl }}/plots/latent_clusters/geom_tail.png)
+![Epistemic tail]({{ site.baseurl }}/plots/latent_clusters/epistemic_tail.png)
+![Chaotic tail]({{ site.baseurl }}/plots/latent_clusters/chaotic_tail.png)
+![Unknown subset]({{ site.baseurl }}/plots/latent_clusters/unknown_imgs.png)
+
 
 The purpose of this step was to verify whether the clusters showed structural separation on the true latent manifold.
 
@@ -214,11 +216,11 @@ No meaningful cluster formation was observed in any category or projection.
 
 Therefore, the latent-validation experiment was left as a diagnostic step and not included in the pipeline.
 
-![UMAP_clusters](plots/umap_clusters.png)
+![UMAP clusters]({{ site.baseurl }}/plots/umap_clusters.png)
 
--[pca cluster](plots/clusters/pca_cluster.png)
--[cluster 1](plots/clusters/cluster01.png)
--[cluster 2](plots/clusters/cluster02.png)
+![PCA cluster]({{ site.baseurl }}/plots/clusters/pca_cluster.png)
+![Cluster 1]({{ site.baseurl }}/plots/clusters/cluster01.png)
+![Cluster 2]({{ site.baseurl }}/plots/clusters/cluster02.png)
 
 
 
@@ -266,7 +268,7 @@ First, we worked with 1280-dimensional vectors extracted from EfficientNet's pen
 
 **Finding**: Even though humans cannot see it in 2 dimensions, when we look at the model's high-dimensional manifold, these two classes live in statistically distinct regions.
 
-![plot](plots/chaos_edge_umap_separation.png)
+![Chaos–Edge UMAP separation]({{ site.baseurl }}/plots/chaos_edge_umap_separation.png)
 
 ### Color vs. Structure Hypothesis
 
