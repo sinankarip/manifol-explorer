@@ -1,6 +1,8 @@
 title: Manifold Explorer
 description: Beyond Accuracy — Open-set geometry & diagnostics
 theme: minima
+baseurl: "/manifol-explorer"
+
 
 
 
