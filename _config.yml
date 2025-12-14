@@ -1,8 +1,12 @@
 title: Manifold Explorer
 description: Beyond Accuracy — Open-set geometry & diagnostics
 theme: minima
-baseurl: "/manifol-explorer"
+baseurl: "/manifol-explorer"  # manifol değil manifold olmalı sanırım?
 
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 
 
