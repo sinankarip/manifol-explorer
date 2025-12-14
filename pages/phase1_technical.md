@@ -222,13 +222,6 @@ We only have **2,000 agricultural images**. Relative to the **hundreds of millio
 ## 2. The Tail Distribution Problem
 
 Even if we attempt to fine-tune Stable Diffusion, the parameter prior induced by its massive base model remains heavily biased toward the **high-density regions** of its global training distribution.  
-Formally, if \( p_{\text{SD}}(x) \) denotes the pretrained model’s data prior and \( p_{\text{agri}}(x) \) our narrow agricultural distribution, then \( p_{\text{agri}}(x) \ll p_{\text{SD}}(x) \) for most \( x \in \mathcal{X} \).  
-Fine-tuning with only 2,000 samples introduces a **measure mismatch problem**:
-\[
-\int_{\mathcal{X}} |p_{\text{agri}}(x) - p_{\text{SD}}(x)| dx \gg 0
-\]
-Thus, the fine-tuned model remains dominated by the pretrained prior and continues to generate *semantically irrelevant or stylistically biased* images.
-
 ---
 
 # 05a_feature_extraction.ipynb — Attempted Latent-Space Validation
