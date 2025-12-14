@@ -17,23 +17,17 @@ In this project, learning is **not** defined as statistical risk minimization, p
 
 Instead, learning is interpreted as a **structural correspondence problem**.
 
-Let  
-$$
-(\mathcal{X}, \tau)
-$$
-denote a problem space equipped only with a topology.  
-No probability measure, metric, norm, or ordering relation is assumed.
+Let $(\mathcal{X}, \tau)$ denote a problem space equipped only with a topology. No probability measure, metric, norm, or ordering relation is assumed.
 
 Within this space, we consider latent, task-relevant problem substructures:
-$$
-\{P_k\}_{k \in K}, \quad P_k \subset \mathcal{X}
-$$
+
+$$\{P_k\}_{k \in K}, \quad P_k \subset \mathcal{X}$$
+
 which are not required to be disjoint, measurable, enumerable, or sharply defined.
 
 A model induces a family of decision regions:
-$$
-\{D_i\}_{i \in I}, \quad D_i \subset \mathcal{X}
-$$
+
+$$\{D_i\}_{i \in I}, \quad D_i \subset \mathcal{X}$$
 
 Learning is understood as the existence of a **partial and necessarily incomplete structural correspondence** between selected problem substructures and model-induced decision regions.
 
@@ -47,16 +41,9 @@ No assumption is made that this correspondence is:
 
 A central assumption of this project is that the problem space is sufficiently large and rich such that **global optimal learning is impossible**.
 
-Formally, for any model-induced family of decision regions:
-$$
-\{D_i\}_{i \in I}
-$$
-there exists at least one element:
-$$
-a \in \mathcal{X}
-\quad \text{such that} \quad
-a \notin \bigcup_{i \in I} D_i
-$$
+Formally, for any model-induced family of decision regions $\{D_i\}_{i \in I}$, there exists at least one element:
+
+$$a \in \mathcal{X} \quad \text{such that} \quad a \notin \bigcup_{i \in I} D_i$$
 
 That is, **every model necessarily leaves parts of the problem space structurally uncovered**.
 
@@ -91,14 +78,6 @@ All subsequent analyses, visualizations, and interpretations in this project are
 
 ---
 
-## Closing Remark
-
-This work does not seek authority, generality, or finality.
-
-It documents a line of questioning and a way of thinking about learning that the author found more honest and productive for the problems at hand.
-
-Nothing more is claimed.
-
 ## On the Scope of This Project
 
 This project does **not** propose a framework, a formal methodology, or a complete learning theory.
@@ -128,7 +107,12 @@ Rather than fitting observations into an existing formal structure, the project 
 
 Any coherence that emerges across experiments should be interpreted as **post hoc consistency**, not as evidence of an underlying formal framework.
 
-If a framework exists, it is not claimed here.
-If one does not, this project remains valid as an inquiry.
-
 ---
+
+## Closing Remark
+
+This work does not seek authority, generality, or finality.
+
+It documents a line of questioning and a way of thinking about learning that the author found more honest and productive for the problems at hand.
+
+Nothing more is claimed.
