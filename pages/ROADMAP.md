@@ -1,4 +1,15 @@
-#  Project Roadmap & Methodology
+---
+layout: default
+title: Project Roadmap
+---
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+
+# Project Roadmap & Methodology
+...
 
 This document outlines the strategic evolution of **Manifold Explorer**. The project moves beyond standard accuracy metrics to build a framework capable of quantifying epistemic uncertainty and resisting open-set ambiguity.
 
