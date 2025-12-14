@@ -1,13 +1,3 @@
----
-layout: default
-title: Project Roadmap
----
-
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'default' });
-</script>
-
 # Project Roadmap & Methodology
 ...
 
@@ -54,46 +44,14 @@ This document outlines the strategic evolution of **Manifold Explorer**. The pro
 
 ---
 
-##  Methodological Flow
+## Methodological Flow
 
-```mermaid
-graph TD
-    %% --- GLOBAL STYLES ---
-    classDef done fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000;
-    classDef active fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,stroke-dasharray: 5 5,color:#000;
-    classDef future fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000;
-    classDef fail fill:#ffebee,stroke:#c62828,stroke-width:2px,stroke-dasharray: 5 5,color:#000;
+<figure>
+  <img src="{{ site.baseurl }}/plots/Mermaid.svg"
+       alt="Methodological Flow"
+       style="max-width:100%; height:auto;">
+  <figcaption><strong>Figure 1.</strong> End-to-end methodological pipeline of Manifold Explorer.</figcaption>
+</figure>
 
-    %% --- PHASE I ---
-    subgraph Phase_I [ Phase I: Diagnosis & Analysis]
-        direction TB
-        P1_A[Baseline Comparison] -->|ResNet vs EffNet| P1_B[EfficientNet Selected]
-        P1_B --> P1_C[Void Score Formulation]
-        P1_C --> P1_D{Manifold Analysis}
-        P1_D -->|Tail Distribution| P1_E[Generative AI Failed]
-        P1_D -->|Open Set Risk| P1_F[Heuristics Insufficient]
-    end
 
-    %% --- PHASE II ---
-    subgraph Phase_II [ Phase II: Open Set Solution]
-        direction TB
-        P1_F --> P2_A[Energy-Based Models]
-        P1_E --> P2_B[Outlier Exposure Strategy]
-        P2_A --> P2_C[Spectral Normalization]
-        P2_B --> P2_C
-        P2_C --> P2_D[Goal: Robust Manifold]
-    end
 
-    %% --- PHASE III ---
-    subgraph Phase_III [ Phase III: Active Defense]
-        direction TB
-        P2_D --> P3_A[Guardrail: Rejection Threshold]
-        P3_A --> P3_B[Adversarial Stress Test]
-        P3_B --> P3_C[Final Safe System]
-    end
-
-    %% --- STYLING ---
-    class P1_A,P1_B,P1_C,P1_D done;
-    class P1_E,P1_F fail;
-    class P2_A,P2_B,P2_C,P2_D active;
-    class P3_A,P3_B,P3_C future;
