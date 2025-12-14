@@ -1,15 +1,13 @@
 # manifold-explorer
 Beyond Accuracy: A framework for diagnosing topological blind spots and quantifying epistemic uncertainty in computer vision models.
 > - Dataset used: [here](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)
-## Core Philosophy of the Project
+# Core Philosophy of the Project
 
 This project does not aim to propose a new learning theory, framework, or formal methodology.
-
 The purpose of this work is to clarify **how the learning problem is conceptualized** within the scope of this project, and to explore the consequences of that conceptualization through observation and experimentation.
 
 It is entirely possible that similar interpretations already exist in the literature.  
 If so, this project does not claim originality; it adopts a viewpoint that is found to be more compatible with the questions being explored here.
-
 This is a personal research blog, and the philosophy of the project reflects that context.
 
 ---
@@ -19,23 +17,22 @@ This is a personal research blog, and the philosophy of the project reflects tha
 Learning is approached as a problem defined over a large and structurally rich space, where only partial understanding is possible.
 
 We consider a problem space  
-\[
-(\mathcal{X}, \tau)
-\]
+
+$$(\mathcal{X}, \tau)$$
+
 equipped only with a topology.
 
 No probability measure, metric, norm, loss function, or ordering relation is assumed.
 
 Within this space, we reason about latent, task-relevant problem substructures:
-\[
-\{P_k\}_{k \in K}, \quad P_k \subset \mathcal{X}
-\]
+
+$$\\{P_k\\}_{k \in K}, \quad P_k \subset \mathcal{X}$$
+
 which are not required to be disjoint, measurable, enumerable, or sharply defined.
 
 A model, in turn, is understood to induce a family of decision regions:
-\[
-\{D_i\}_{i \in I}, \quad D_i \subset \mathcal{X}
-\]
+
+$$\\{D_i\\}_{i \in I}, \quad D_i \subset \mathcal{X}$$
 
 Learning is interpreted here as the existence of a **partial and necessarily incomplete structural correspondence** between selected problem substructures and model-induced decision regions.
 
@@ -48,15 +45,12 @@ No assumption is made that such correspondence is complete, optimal, unique, or 
 A central assumption guiding this project is that the problem space is sufficiently large and expressive such that **globally optimal or complete learning is not achievable**.
 
 Formally, for any model-induced collection of decision regions:
-\[
-\{D_i\}_{i \in I}
-\]
+
+$$\\{D_i\\}_{i \in I}$$
+
 there exists at least one element:
-\[
-a \in \mathcal{X}
-\quad \text{such that} \quad
-a \notin \bigcup_{i \in I} D_i
-\]
+
+$$a \in \mathcal{X} \quad \text{such that} \quad a \notin \bigcup_{i \in I} D_i$$
 
 This assumption is not presented as a theorem, nor as a claim about specific models, but as a **conceptual boundary** within which this project operates.
 
@@ -72,6 +66,7 @@ It does not seek to define optimality, rank models, or establish performance gua
 It does not attempt to replace existing statistical or optimization-based learning frameworks.
 
 Instead, it asks a limited set of recurring questions, such as:
+
 - Which structures appear to be captured by a model?
 - Which structures remain systematically unsupported?
 - How do failures manifest when no notion of global optimality is assumed?
@@ -79,7 +74,6 @@ Instead, it asks a limited set of recurring questions, such as:
 The goal is not to answer these questions definitively, but to **examine them carefully** within the adopted conceptual stance.
 
 No stronger claim is made.
-
 
 ### Experiment 1: ResNet - A Dangerous Overconfidence
 
