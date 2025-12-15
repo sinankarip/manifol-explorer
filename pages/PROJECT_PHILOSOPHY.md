@@ -1,3 +1,13 @@
+---
+title: "Project Philosophy"
+nav_order: 1
+nav_exclude: false
+permalink: /project-philosophy/
+---
+
+# Project Philosophy
+...
+
 # Project Scope and Definitional Framework
 
 ## On the Definition of Learning Used in This Project
