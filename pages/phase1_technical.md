@@ -1,3 +1,10 @@
+---
+title: "Phase I Technical"
+nav_order: 4
+nav_exclude: false
+permalink: /phase1-technical/
+---
+
 # manifold-explorer
 Beyond Accuracy: A framework for diagnosing topological blind spots and quantifying epistemic uncertainty in computer vision models.
 > - Dataset used: [here](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)
