@@ -22,5 +22,7 @@ kramdown:
 
 search_enabled: true
 
+color_scheme: color
+
 
 
