@@ -1,11 +1,67 @@
-$body-background-color: #f3f2ee;   
-$body-text-color: #1f2328;
+$color-cream-light:  #fdfbf7; 
+$color-cream-medium: #f2efe9; 
+$color-cream-dark:   #e6e2d8; 
 
-$link-color: #0b5fff;
+$color-text-main:    #2e2b26; 
+$color-text-muted:   #5c554b; 
 
-$sidebar-color: #ece9e2;           
-$border-color: #d6d3cc;
+$color-accent-haki:  #5a6b46; 
+$color-accent-haki-hover: #435034; 
 
-$code-background-color: #e9e6df;   
-$search-background-color: #f3f2ee;
-$search-result-preview-color: #5b616a;
+$color-accent-earth: #8c7b6c; 
+$color-border:       #dcd9ce; 
+
+
+
+$body-background-color: $color-cream-light;
+$body-text-color:       $color-text-main;
+
+$link-color:            $color-accent-haki;
+$link-hover-color:      $color-accent-haki-hover;
+
+$sidebar-color:         $color-cream-medium;
+$border-color:          $color-border;
+
+$code-background-color: $color-cream-dark;
+$code-text-color:       #38342e; 
+$search-background-color: #ffffff; 
+$search-border-color:     $color-accent-earth;
+$search-result-preview-color: $color-text-muted;
+
+
+body {
+  background-color: $body-background-color;
+  color: $body-text-color;
+  font-family: 'Inter', 'Segoe UI', sans-serif; 
+  line-height: 1.6; 
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+.sidebar, .card {
+  background-color: $sidebar-color;
+  border-right: 1px solid $border-color; 
+}
+
+
+pre, code {
+  background-color: $code-background-color;
+  color: $code-text-color;
+  border: 1px solid darken($code-background-color, 5%);
+  border-radius: 4px;
+}
+
+::selection {
+  background-color: rgba($color-accent-haki, 0.2);
+  color: $color-text-main;
+}
