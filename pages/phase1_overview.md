@@ -1,3 +1,10 @@
+---
+title: "Phase I Overview"
+nav_order: 3
+nav_exclude: false
+permalink: /phase1-overview/
+---
+
 # manifold-explorer
 Beyond Accuracy: A framework for diagnosing topological blind spots and quantifying epistemic uncertainty in computer vision models.
 
