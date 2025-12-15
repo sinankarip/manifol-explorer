@@ -1,13 +1,19 @@
 title: Manifold Explorer
 description: Beyond Accuracy — Open-set geometry & diagnostics
-theme: minima
-baseurl: "/manifol-explorer"  
+
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+baseurl: "/manifol-explorer"
 
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
   math_engine: mathjax
+
+search_enabled: true
 
 
 
