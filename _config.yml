@@ -2,6 +2,13 @@ title: Manifold Explorer
 description: Beyond Accuracy — Open-set geometry & diagnostics
 
 remote_theme: just-the-docs/just-the-docs
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      nav_exclude: true
+
 plugins:
   - jekyll-remote-theme
 
